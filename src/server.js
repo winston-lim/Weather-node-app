@@ -1,10 +1,12 @@
 const path = require('path');
 const express = require('express');
 const hbs = require('hbs');
-const app = express();
 
 const getLatLng = require('./utils/geocode.js');
 const getWeatherData = require('./utils/weatherstack.js');
+
+const app = express();
+const port = process.env.PORT || 3000;
 
 //define paths for config
 const publicDirectoryPath = path.join(__dirname, '../public/');
@@ -80,6 +82,6 @@ app.get('*', (req,res)=>{
   });
 }) 
 
-app.listen(3000, ()=> {
-  console.log('Express has started on port 3000')
+app.listen(port, ()=> {
+  console.log(`Node has started at ${port}`);
 });
